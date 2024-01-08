@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { Patient } from "../../types";
 import patientService from "../../services/patients";
 
+import PatientEntry from "../PatientEntry";
+
 const PatientPage = () => {
   const { id } = useParams();
   const [patient, setPatient] = useState<Patient|null>(null);
@@ -20,11 +22,21 @@ const PatientPage = () => {
 
   return (patient) && (
     <main>
-      <h3>{patient.name}</h3>
-      <h4><strong>{patient.gender}</strong></h4>
-      <h4>date of birth: {patient.dateOfBirth}</h4>
-      <h4>ssn: {patient.ssn}</h4>
-      <h4>occupation: {patient.occupation}</h4>
+      <section id="information">
+        <h3>{patient.name}</h3>
+        <h4><strong>{patient.gender}</strong></h4>
+        <h4>date of birth: {patient.dateOfBirth}</h4>
+        <h4>ssn: {patient.ssn}</h4>
+        <h4>occupation: {patient.occupation}</h4>
+      </section>
+      <section id="entries">
+        <h3><strong>Entries</strong></h3>
+        <ul>
+          {
+            patient.entries.map(entry => <PatientEntry key={entry.id} entry={entry}/>)
+          }
+        </ul>
+      </section>
     </main>
   );
 };
