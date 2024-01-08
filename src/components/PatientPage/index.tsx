@@ -4,10 +4,12 @@ import { Patient } from "../../types";
 import patientService from "../../services/patients";
 
 import PatientEntry from "../PatientEntry";
+import useDiagnoses from "../../hooks/useDiagnoses";
 
 const PatientPage = () => {
   const { id } = useParams();
   const [patient, setPatient] = useState<Patient|null>(null);
+  const [diagnoses] = useDiagnoses();
 
   useEffect(() => {
     const fetchPatientDetail = async () => {
@@ -33,7 +35,13 @@ const PatientPage = () => {
         <h3><strong>Entries</strong></h3>
         <ul>
           {
-            patient.entries.map(entry => <PatientEntry key={entry.id} entry={entry}/>)
+            patient.entries.map(entry =>
+              <PatientEntry
+                key={entry.id}
+                entry={entry}
+                diagnoses={diagnoses}
+              />
+            )
           }
         </ul>
       </section>

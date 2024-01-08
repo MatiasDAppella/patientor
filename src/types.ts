@@ -66,6 +66,8 @@ export interface Patient {
   entries: Entry[];
 }
 
+export type PatientFormValues = Omit<Patient, "id" | "entries">;
+
 export type NonSensitivePatients = Omit<Patient, "ssn" | "entries">;
 
 // Special Omit definition for unions.

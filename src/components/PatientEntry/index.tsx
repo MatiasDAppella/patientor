@@ -1,4 +1,4 @@
-import { Entry } from '../../types';
+import { Diagnose, Entry } from '../../types';
 
 // Components
 import HealthCheck from './entries/HealthCheck';
@@ -7,18 +7,19 @@ import OccupationalHealthcare from './entries/OccupationalHealthcate';
 
 interface EntryProps {
   entry: Entry;
+  diagnoses: Diagnose[];
 }
 
-const PatientEntry = ({ entry }: EntryProps) => {
+const PatientEntry = ({ entry, diagnoses }: EntryProps) => {
   switch (entry.type){
     case ("HealthCheck"):
-      return <HealthCheck entry={entry}/>;
+      return <HealthCheck entry={entry} diagnoses={diagnoses}/>;
 
     case ("Hospital"):
-      return <Hospital entry={entry}/>;
+      return <Hospital entry={entry} diagnoses={diagnoses}/>;
 
     case ("OccupationalHealthcare"):
-      return <OccupationalHealthcare entry={entry}/>;
+      return <OccupationalHealthcare entry={entry} diagnoses={diagnoses}/>;
 
     default:
       return <li>Non existant type</li>;
