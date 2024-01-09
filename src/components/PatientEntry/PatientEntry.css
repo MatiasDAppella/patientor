@@ -1,0 +1,37 @@
+.entry {
+  border: 1px solid black;
+  border-radius: 10px;
+  list-style-type: none;
+  padding: 10px 30px;
+}
+
+.info-box {
+  display: flex;
+  gap: 10px;
+}
+
+#date {
+  flex: none;
+}
+
+#desc {
+  flex: 1;
+}
+
+.extra-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.health-check {
+  background-color: #86efac;
+}
+
+.hospital {
+  background-color: #fde68a;
+}
+
+.occupational-healthcare {
+  background-color: #a5b4fc;
+}

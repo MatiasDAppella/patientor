@@ -1,4 +1,5 @@
 import { Diagnose, Entry } from '../../types';
+import './PatientEntry.css';
 
 // Components
 import HealthCheck from './entries/HealthCheck';

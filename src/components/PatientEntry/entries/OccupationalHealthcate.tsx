@@ -7,9 +7,19 @@ interface EntryProps {
 
 const OccupationalHealthcare = ({ entry, diagnoses }: EntryProps) => {
   return (
-    <li>
-      <h4>{entry.date}</h4>
-      <h4>{entry.description}</h4>
+    <li className='entry occupational-healthcare'>
+      <div className='info-box'>
+        <h4 id='date'>{entry.date}</h4>
+        <h4 id='desc'>{entry.description}</h4>
+      </div>
+      <div className='extra-info'>
+        <span>{`Employer name: ${entry.employerName}`}</span>
+        {
+          (entry.sickLeave) && <span>
+            {`Sick leave from ${entry.sickLeave?.startDate} to ${entry.sickLeave?.endDate}`}
+          </span>
+        }
+      </div>
       {
         (entry.diagnosisCodes) && <div>
           <h3>Diagnoses</h3>
@@ -22,10 +32,10 @@ const OccupationalHealthcare = ({ entry, diagnoses }: EntryProps) => {
                 : <li key={code}><strong>{code}</strong></li>;
             })
           }
-        </ul>
+          </ul>
         </div>
       }
-      <h4>{entry.specialist}</h4>
+      <h4>Diagnose by {entry.specialist}</h4>
     </li>
   );
 };

@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Patient } from "../../types";
 import patientService from "../../services/patients";
+import "./PatientPage.css";
 
 import PatientEntry from "../PatientEntry";
 import useDiagnoses from "../../hooks/useDiagnoses";
@@ -33,7 +34,7 @@ const PatientPage = () => {
       </section>
       <section id="entries">
         <h3><strong>Entries</strong></h3>
-        <ul>
+        <ul className="entries-list">
           {
             patient.entries.map(entry =>
               <PatientEntry
